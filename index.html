@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>50 Visual Transforms Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>50 Visual Transforms Demo</h1>
+  <p>Upload an image and apply one of 50 simple-but-confusing transforms.</p>
+
+  <div class="controls">
+    <input type="file" id="imageInput" accept="image/*">
+    <select id="transformSelect"></select>
+    <button id="applyBtn">Apply</button>
+    <button id="resetBtn">Reset</Original>
+    <button id="downloadBtn">Download</button>
+  </div>
+
+  <div class="canvases">
+    <div>
+      <h3>Original</h3>
+      <canvas id="originalCanvas" width="400" height="300"></canvas>
+    </div>
+    <div>
+      <h3>Transformed</h3>
+      <canvas id="transformedCanvas" width="400" height="300"></canvas>
+    </div>
+  </div>
+
+  <p id="explanation"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
