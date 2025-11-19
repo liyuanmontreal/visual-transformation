@@ -1,36 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>50 Visual Transforms Demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projector + 70 Transforms Demo (Modular)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>50 Visual Transforms Demo</h1>
-  <p>Upload an image and apply one of 50 simple-but-confusing transforms.</p>
+  <h1>Transforms</h1>
 
-  <div class="controls">
+  <div class="panel">
+    <h2>Image / Text Input</h2>
     <input type="file" id="imageInput" accept="image/*">
+    <textarea id="textInput" placeholder="Type text to project..."></textarea>
+    <button id="renderTextBtn">Render Text</button>
+  </div>
+
+  <div class="panel">
+    <h2>Transforms</h2>
     <select id="transformSelect"></select>
-    <button id="applyBtn">Apply</button>
-    <button id="resetBtn">Reset</Original>
+    <button id="applyBtn">Apply Transform</button>
+    <button id="resetBtn">Reset</button>
     <button id="downloadBtn">Download</button>
   </div>
 
-  <div class="canvases">
-    <div>
+  <div class="canvas-row">
+    <div class="canvas-block">
       <h3>Original</h3>
-      <canvas id="originalCanvas" width="400" height="300"></canvas>
+      <canvas id="originalCanvas" width="500" height="350"></canvas>
     </div>
-    <div>
+    <div class="canvas-block">
       <h3>Transformed</h3>
-      <canvas id="transformedCanvas" width="400" height="300"></canvas>
+      <canvas id="transformedCanvas" width="500" height="350"></canvas>
     </div>
   </div>
 
   <p id="explanation"></p>
 
-  <script src="script.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
