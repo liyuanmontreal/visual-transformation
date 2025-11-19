@@ -1,10 +1,10 @@
 /* ===== Global Layout ===== */
 body {
-  background: #0f0f0f;
+  background: #0b0c10;
   color: #e5e5e5;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
-  padding: 20px 30px;
+  padding: 20px 30px 60px;
 }
 
 h1 {
@@ -15,7 +15,7 @@ h1 {
 }
 
 h2 {
-  margin-top: 0;
+  margin-top: 20px;
   color: #cfcfcf;
 }
 
@@ -25,11 +25,11 @@ h3 {
 }
 
 .panel {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: #15161b;
+  border: 1px solid #2b2d33;
   padding: 15px;
   margin-bottom: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 /* ===== Inputs ===== */
@@ -46,16 +46,16 @@ select,
 button {
   padding: 8px 10px;
   font-size: 14px;
-  background: #222;
-  border: 1px solid #555;
+  background: #1b1c22;
+  border: 1px solid #444;
   color: #eee;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 input[type="file"]:hover,
 select:hover,
 button:hover {
-  border-color: #888;
+  border-color: #7ea6ff;
 }
 
 button {
@@ -66,19 +66,20 @@ button {
 textarea {
   width: 100%;
   height: 80px;
-  background: #181818;
+  background: #18181f;
   color: #eee;
   border: 1px solid #444;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 14px;
+  resize: vertical;
 }
 
 textarea:focus,
 input:focus,
 select:focus,
 button:focus {
-  outline: 1px solid #999;
+  outline: 1px solid #7ea6ff;
 }
 
 /* ===== Canvas Layout ===== */
@@ -98,7 +99,7 @@ button:focus {
 canvas {
   background: #000;
   border: 1px solid #444;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-bottom: 10px;
   width: 500px;
   height: 350px;
@@ -110,4 +111,162 @@ canvas {
   font-size: 15px;
   text-align: center;
   color: #b0b0b0;
+}
+
+/* ===== Gallery Filters ===== */
+
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #e0e0e0;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.filter-btn.active {
+  background: #4aa3ff;
+  border-color: #4aa3ff;
+  color: #000;
+}
+
+/* ===== Enhanced Gallery Grid ===== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+  padding-bottom: 40px;
+}
+
+/* Card Container */
+.gallery-item {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover glow */
+.gallery-item:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  border-color: rgba(100,180,255,0.4);
+}
+
+/* Selected card */
+.gallery-item.selected {
+  border-color: #4aa3ff;
+  box-shadow: 0 0 12px rgba(50,150,255,0.7);
+}
+
+/* Thumbnail Canvas */
+.gallery-item canvas {
+  width: 160px;
+  height: 120px;
+  background: #000;
+  border-radius: 6px;
+  border: 1px solid #333;
+  transition: transform 0.25s ease;
+}
+
+.gallery-item:hover canvas {
+  transform: scale(1.05);
+}
+
+/* Label */
+.gallery-label {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+/* Effect Type Tag */
+.effect-tag {
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #aeeaff;
+  opacity: 0.8;
+}
+
+/* ===== Lightbox ===== */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox-content {
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox-content canvas {
+  border: 1px solid #555;
+  background: #000;
+  width: 800px;
+  height: 560px;
+  border-radius: 8px;
+}
+
+#lightboxClose {
+  margin-top: 20px;
+  padding: 6px 14px;
+  background: #4aa3ff;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  cursor: pointer;
+}
+
+#lightboxClose:hover {
+  background: #70b8ff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
 }

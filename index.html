@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>Projector + 70 Transforms Demo (Modular)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Projection + Transforms Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- 用于导出缩略图 ZIP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 </head>
 <body>
-  <h1>Transforms</h1>
+  <h1> Visual Transforms</h1>
 
+  <!-- 输入区：图片 + 文字 -->
   <div class="panel">
     <h2>Image / Text Input</h2>
-    <input type="file" id="imageInput" accept="image/*">
+    <input type="file" id="imageInput" accept="image/*" />
     <textarea id="textInput" placeholder="Type text to project..."></textarea>
     <button id="renderTextBtn">Render Text</button>
   </div>
 
+  <!-- 变换选择区 -->
   <div class="panel">
     <h2>Transforms</h2>
     <select id="transformSelect"></select>
@@ -24,6 +28,7 @@
     <button id="downloadBtn">Download</button>
   </div>
 
+  <!-- 主画布：原始 & 变换后 -->
   <div class="canvas-row">
     <div class="canvas-block">
       <h3>Original</h3>
@@ -36,6 +41,27 @@
   </div>
 
   <p id="explanation"></p>
+
+  <!-- 效果缩略图画廊 -->
+  <h2>All Effects Gallery</h2>
+
+  <div id="galleryFilters" class="gallery-filters">
+    <button data-filter="all" class="filter-btn active">All</button>
+    <button data-filter="Image" class="filter-btn">Image</button>
+    <button data-filter="Text" class="filter-btn">Text</button>
+    <button data-filter="Projector" class="filter-btn">Projector</button>
+    <button id="exportZipBtn" class="filter-btn">Export Thumbnails</button>
+  </div>
+
+  <div id="gallery" class="gallery-grid"></div>
+
+  <!-- 大图预览 Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+      <canvas id="lightboxCanvas"></canvas>
+      <button id="lightboxClose">Close</button>
+    </div>
+  </div>
 
   <script type="module" src="main.js"></script>
 </body>
