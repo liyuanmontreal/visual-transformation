@@ -33,3 +33,7 @@ Screen wrinkles
 Lamp flicker
 Hotspot brightness
 Dust & debris artifacts
+
+
+How to run
+py -m http.server 8000
